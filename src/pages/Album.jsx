@@ -44,7 +44,12 @@ export default class Album extends Component {
           </div>
           { musicsOfAlbum.map((music) => (
             <div key={ music.trackId }>
-              <MusicCard previewUrl={ music.previewUrl } trackName={ music.trackName } />
+              <MusicCard
+                previewUrl={ music.previewUrl }
+                trackName={ music.trackName }
+                trackId={ music.trackId }
+                // req={music}
+              />
             </div>
           ))}
         </div>
