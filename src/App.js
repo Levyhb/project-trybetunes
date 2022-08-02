@@ -41,7 +41,8 @@ class App extends React.Component {
         <h1> TrybeTunes</h1>
 
         <Switch>
-          <Route path="/album/:id" component={ Album } />
+          {/* <Route path="/album/:id" component={ Album } /> */}
+          <Route exact path="/album/:id" render={ (props) => <Album { ...props } /> } />
           <Route path="/profile/edit" component={ ProfileEdit } />
           <Route
             path="/profile"
