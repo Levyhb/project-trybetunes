@@ -43,7 +43,10 @@ class App extends React.Component {
         <Switch>
           <Route path="/album/:id" component={ Album } />
           <Route path="/profile/edit" component={ ProfileEdit } />
-          <Route path="/profile" component={ Profile } />
+          <Route
+            path="/profile"
+            component={ Profile }
+          />
           <Route path="/favorites" component={ Favorites } />
           <Route path="/search" component={ Search } />
           <Route
@@ -61,6 +64,7 @@ class App extends React.Component {
             ) }
           />
           <Route component={ NotFound } />
+
         </Switch>
       </div>
 
