@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from './MusicCard';
-import { getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
+import './pages.css';
 
 export default class Album extends Component {
   constructor(props) {
@@ -43,6 +44,18 @@ export default class Album extends Component {
     });
   }
 
+  handleChangeFavorites = async (music, { target }) => {
+    const { checked } = target;
+    this.setState({ isLoading: true }, async () => {
+      if (checked) {
+        await addSong(music);
+      } else {
+        await removeSong(music);
+      }
+      this.requestFavoriteSongs();
+    });
+  }
+
   componentDidMount = async () => {
     await this.albumMusic();
     await this.requestFavoriteSongs();
@@ -55,7 +68,7 @@ export default class Album extends Component {
       <div data-testid="page-album">
         <Header />
         { isLoading ? <Loading /> : (
-          <div>
+          <div className="album-container">
             <div>
               <img src={ albumImg } alt={ albumName } />
               <h2 data-testid="album-name">{albumName}</h2>
@@ -68,7 +81,9 @@ export default class Album extends Component {
                   trackName={ music.trackName }
                   trackId={ music.trackId }
                   favoritesSongs={ favoritesSongs }
+                  isFavorite={ favoritesSongs.some((a) => a.trackId === music.trackId) }
                   music={ music }
+                  handleChangeFavorites={ this.handleChangeFavorites }
                 />
               </div>
             ))}

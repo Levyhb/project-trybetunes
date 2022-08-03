@@ -1,0 +1,13 @@
+.album-container {
+  margin-left: 20px;
+}
+
+.music-div {
+  align-items: center;
+  display: flex;
+  padding: 5px;
+}
+
+.music-div audio {
+  padding: 5px;
+}
