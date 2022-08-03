@@ -38,8 +38,6 @@ class App extends React.Component {
     const { username, isButtonDisabled, isLoading } = this.state;
     return (
       <div>
-        <h1> TrybeTunes</h1>
-
         <Switch>
           {/* <Route path="/album/:id" component={ Album } /> */}
           <Route exact path="/album/:id" render={ (props) => <Album { ...props } /> } />

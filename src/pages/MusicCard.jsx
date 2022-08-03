@@ -8,14 +8,14 @@ export default class MusicCard extends Component {
     super(props);
     this.state = {
       isLoading: false,
-      isChecked: false,
+      isFavorite: false,
+      musicasFavoritas: [],
     };
   }
 
   favoriteSongs = async () => {
-    const { trackId } = this.props;
     this.setState({ isLoading: true });
-    await addSong(trackId);
+    await addSong();
     this.setState({ isLoading: false });
   }
 
@@ -24,14 +24,21 @@ export default class MusicCard extends Component {
   }
 
   handleChange = ({ target }) => {
+    const { music } = this.props;
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({ [name]: value });
+    this.setState((prevState) => {
+      if (name) {
+        this.setState({ musicasFavoritas: [...prevState.musicasFavoritas, music] });
+      }
+    });
   }
 
   render() {
-    const { isLoading, isChecked } = this.state;
+    const { isLoading, isFavorite, musicasFavoritas } = this.state;
     const { previewUrl, trackName, trackId } = this.props;
+    console.log(musicasFavoritas);
     return (
       <div>
         { isLoading ? <Loading /> : (
@@ -49,15 +56,15 @@ export default class MusicCard extends Component {
               .
             </audio>
             <label
-              htmlFor="favorites"
+              htmlFor={ trackId }
             >
               Favorita
               <input
                 data-testid={ `checkbox-music-${trackId}` }
                 type="checkbox"
-                name="isChecked"
-                id="favorites"
-                checked={ isChecked }
+                name="isFavorite"
+                id={ trackId }
+                checked={ isFavorite }
                 onChange={ this.handleChange }
                 onClick={ this.favoriteSongs }
               />

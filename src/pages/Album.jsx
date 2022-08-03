@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from './MusicCard';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
+import Loading from './Loading';
 
 export default class Album extends Component {
   constructor(props) {
@@ -12,10 +14,12 @@ export default class Album extends Component {
       artistName: '',
       albumName: '',
       albumImg: '',
+      isLoading: false,
+      favoritesSongs: [],
     };
   }
 
-  componentDidMount = async () => {
+  albumMusic = async () => {
     const { match: { params: { id } } } = this.props;
 
     const req = await getMusics(id);
@@ -30,29 +34,47 @@ export default class Album extends Component {
     });
   }
 
-  render() {
-    const { musicsOfAlbum, artistName, albumImg, albumName } = this.state;
+  requestFavoriteSongs = async () => {
+    this.setState({ isLoading: true });
+    const reqFavoriteSongs = await getFavoriteSongs();
+    this.setState({
+      isLoading: false,
+      favoritesSongs: reqFavoriteSongs,
+    });
+  }
 
+  componentDidMount = async () => {
+    await this.albumMusic();
+    await this.requestFavoriteSongs();
+  }
+
+  render() {
+    const { musicsOfAlbum, artistName,
+      albumImg, albumName, isLoading, favoritesSongs } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
-        <div>
+        { isLoading ? <Loading /> : (
           <div>
-            <img src={ albumImg } alt={ albumName } />
-            <h2 data-testid="album-name">{albumName}</h2>
-            <p data-testid="artist-name">{artistName}</p>
-          </div>
-          { musicsOfAlbum.map((music) => (
-            <div key={ music.trackId }>
-              <MusicCard
-                previewUrl={ music.previewUrl }
-                trackName={ music.trackName }
-                trackId={ music.trackId }
-                // req={music}
-              />
+            <div>
+              <img src={ albumImg } alt={ albumName } />
+              <h2 data-testid="album-name">{albumName}</h2>
+              <h3 data-testid="artist-name">{artistName}</h3>
             </div>
-          ))}
-        </div>
+            { musicsOfAlbum.map((music) => (
+              <div key={ music.trackId }>
+                <MusicCard
+                  previewUrl={ music.previewUrl }
+                  trackName={ music.trackName }
+                  trackId={ music.trackId }
+                  favoritesSongs={ favoritesSongs }
+                  music={ music }
+                />
+              </div>
+            ))}
+          </div>
+        )}
+
       </div>
     );
   }

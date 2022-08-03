@@ -1,0 +1,16 @@
+.header-container {
+  width: 100%;
+}
+
+.header-titles {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-div {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px 0;
+  width: 100%;
+}

@@ -46,6 +46,8 @@ export default class Search extends Component {
       loadingState, artistsAlbuns, artistName, activateButton } = this.state;
     return (
       <div data-testid="page-search">
+        <Header />
+
         { loadingState ? <Loading /> : (
           <section>
             <div>
@@ -103,7 +105,6 @@ export default class Search extends Component {
             </div>
           </section>
         )}
-        <Header />
       </div>
     );
   }
