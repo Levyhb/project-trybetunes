@@ -80,7 +80,6 @@ export default class Album extends Component {
                   previewUrl={ music.previewUrl }
                   trackName={ music.trackName }
                   trackId={ music.trackId }
-                  favoritesSongs={ favoritesSongs }
                   isFavorite={ favoritesSongs.some((a) => a.trackId === music.trackId) }
                   music={ music }
                   handleChangeFavorites={ this.handleChangeFavorites }

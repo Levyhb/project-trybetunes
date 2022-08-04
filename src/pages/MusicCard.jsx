@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 import './pages.css';
 
@@ -43,7 +42,6 @@ export default class MusicCard extends Component {
                 id={ trackId }
                 checked={ isFavorite }
                 onChange={ (event) => handleChangeFavorites(music, event) }
-                onClick={ this.favoriteSongs }
               />
 
             </label>
@@ -59,4 +57,10 @@ MusicCard.propTypes = {
   trackName: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
   trackId: PropTypes.number.isRequired,
+  handleChangeFavorites: PropTypes.func.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
+  music: PropTypes.shape({
+    trackId: PropTypes.number,
+    trackName: PropTypes.string,
+  }).isRequired,
 };
