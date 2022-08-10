@@ -64,28 +64,34 @@ export default class Album extends Component {
   render() {
     const { musicsOfAlbum, artistName,
       albumImg, albumName, isLoading, favoritesSongs } = this.state;
+    const imgHd = albumImg.replace(/100x100bb/g, '500x500bb');
+    // const trackPrev = musicsOfAlbum.previewUrl;
     return (
-      <div data-testid="page-album">
+      <div data-testid="page-album" className="page-album">
         <Header />
         { isLoading ? <Loading /> : (
           <div className="album-container">
-            <div>
-              <img src={ albumImg } alt={ albumName } />
+            <div className="div-album-box">
+              <img src={ imgHd } alt={ albumName } className="album-img" />
               <h2 data-testid="album-name">{albumName}</h2>
-              <h3 data-testid="artist-name">{artistName}</h3>
+              <h4 data-testid="artist-name">{artistName}</h4>
             </div>
-            { musicsOfAlbum.map((music) => (
-              <div key={ music.trackId }>
-                <MusicCard
-                  previewUrl={ music.previewUrl }
-                  trackName={ music.trackName }
-                  trackId={ music.trackId }
-                  isFavorite={ favoritesSongs.some((a) => a.trackId === music.trackId) }
-                  music={ music }
-                  handleChangeFavorites={ this.handleChangeFavorites }
-                />
-              </div>
-            ))}
+            <div className="music-container">
+              { musicsOfAlbum.map((music) => (
+                <div key={ music.trackId }>
+                  <MusicCard
+                    previewUrl={ music.previewUrl }
+                    trackName={ music.trackName }
+                    trackId={ music.trackId }
+                    nameArtist={ music.artistName }
+                    image={ imgHd }
+                    isFavorite={ favoritesSongs.some((a) => a.trackId === music.trackId) }
+                    music={ music }
+                    handleChangeFavorites={ this.handleChangeFavorites }
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         )}
 

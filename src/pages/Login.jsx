@@ -2,42 +2,67 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createUser } from '../services/userAPI';
 import Loading from './Loading';
+import trybeTunes from '../img/trybetune-logo.png';
 
 class Login extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLoading: false,
+    };
+  }
+
   handleCreateUser = async () => {
+    this.setState({ isLoading: true });
     const { username, loadingEvent, history } = this.props;
     loadingEvent(true);
     await createUser({ name: username });
     history.push('/search');
+    this.setState({ isLoading: false });
   }
 
-  render() {
-    const { isButtonDisabled, handleChange, isLoading } = this.props;
+  // ADICIONAR FUNÇÃO DE LOGIN, (USUARIO E SENHA).
 
+  render() {
+    const { isButtonDisabled, handleChange } = this.props;
+    const { isLoading } = this.state;
     return (
-      <div data-testid="page-login">
+      <div data-testid="page-login" className="login-page">
         { isLoading
           ? <Loading />
           : (
-            <form action="">
-              <label htmlFor="login-name">
-                <input
-                  type="text"
-                  data-testid="login-name-input"
-                  id="login-name"
-                  onChange={ handleChange }
+            <div>
+              <section className="login-container">
+                <img
+                  src={ trybeTunes }
+                  alt="trybetunes-logo"
+                  className="trybetunes-logo"
                 />
-              </label>
-
-              <button
-                data-testid="login-submit-button"
-                onClick={ this.handleCreateUser }
-                type="button"
-                disabled={ isButtonDisabled }
-              >
-                Entrar
-              </button>
-            </form>) }
+                <form action="">
+                  <label htmlFor="login-name" className="name-login">
+                    User
+                    <input
+                      type="text"
+                      data-testid="login-name-input"
+                      id="login-name"
+                      className="form-control"
+                      onChange={ handleChange }
+                    />
+                    <button
+                      data-testid="login-submit-button"
+                      className="btn btn-success"
+                      onClick={ this.handleCreateUser }
+                      type="button"
+                      disabled={ isButtonDisabled }
+                    >
+                      Entrar
+                    </button>
+                  </label>
+                </form>
+              </section>
+            </div>
+          ) }
       </div>
     );
   }
@@ -49,7 +74,6 @@ Login.propTypes = {
   username: PropTypes.string.isRequired,
   history: PropTypes.string.isRequired,
   loadingEvent: PropTypes.bool.isRequired,
-  isLoading: PropTypes.bool.isRequired,
 };
 
 export default Login;

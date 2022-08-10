@@ -29,29 +29,43 @@ export default class Favorites extends Component {
 
   render() {
     const { isLoading, favoriteSongs } = this.state;
-    return (
-      <div data-testid="page-favorites">
-        <Header />
-        { isLoading ? <Loading /> : (
-          <div>
-            <h2>Favorites</h2>
-            { favoriteSongs.map((song) => (
-              <div key={ song.trackId }>
-                <img src={ song.artworkUrl60 } alt={ song.trackName } />
-                <MusicCard
-                  previewUrl={ song.previewUrl }
-                  trackName={ song.trackName }
-                  trackId={ song.trackId }
-                  favoritesSongs={ favoriteSongs }
-                  isFavorite={ favoriteSongs.some((a) => a.trackId === song.trackId) }
-                  music={ song }
-                  handleChangeFavorites={ this.handleChangeFavorites }
-                />
-              </div>
-            ))}
-          </div>
 
-        )}
+    return (
+      <div>
+        <Header />
+        <div data-testid="page-favorites" className="page-favorites">
+          { isLoading ? <Loading /> : (
+            <div>
+              <div className="header-favorites">
+                <h2 className="favorites-title">Favorite musics</h2>
+              </div>
+              <div className="favorites-container">
+                { favoriteSongs.map((song) => (
+                  <div key={ song.trackId } className="favorites-box">
+                    <div className="favorites-musics">
+                      <img src={ song.artworkUrl100 } alt={ song.trackName } />
+                      <span>{song.artistName}</span>
+                      <MusicCard
+                        className="music-card-component"
+                        previewUrl={ song.previewUrl }
+                        trackName={ song.trackName }
+                        image={ song.artworkUrl100 }
+                        trackId={ song.trackId }
+                        favoritesSongs={ favoriteSongs }
+                        nameArtist={ song.artistName }
+                        isFavorite={
+                          favoriteSongs.some((a) => a.trackId === song.trackId)
+                        }
+                        music={ song }
+                        handleChangeFavorites={ this.handleChangeFavorites }
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     );
   }

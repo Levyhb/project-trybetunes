@@ -63,6 +63,7 @@ export default class ProfileEdit extends Component {
 
   saveUserInfo = () => {
     const { history } = this.props;
+
     this.setState(async () => {
       const { userStorageInformation } = this.state;
       this.setState({ isLoading: true });
@@ -74,55 +75,77 @@ export default class ProfileEdit extends Component {
 
   render() {
     const { isLoading, name, description, image, email } = this.state;
+    console.log(image);
     return (
       <div data-testid="page-profile-edit">
         <Header />
         {isLoading ? <Loading /> : (
-          <div>
-            <h2>Profile Edit</h2>
-            <label htmlFor="name">
-              Name
-              <input
-                type="text"
-                name="name"
-                value={ name }
-                data-testid="edit-input-name"
-                onChange={ this.handleChange }
+          <div className="profile-container">
+            <h3 className="profile-title">Edit your profile</h3>
+
+            <div className=" edit-content">
+              <img
+                src={ image }
+                alt={ name }
+                data-testid="profile-image"
+                className="profile-img"
               />
-            </label>
-            <label htmlFor="email">
-              Email
-              <input
-                type="email"
-                name="email"
-                value={ email }
-                data-testid="edit-input-email"
-                onChange={ this.handleChange }
-              />
-            </label>
-            <label htmlFor="description">
-              Descrição
-              <textarea
-                name="description"
-                value={ description }
-                id="description"
-                cols="30"
-                rows="5"
-                data-testid="edit-input-description"
-                onChange={ this.handleChange }
-              />
-            </label>
-            <label htmlFor="image">
-              imagem
-              <input
-                type="text"
-                name="image"
-                value={ image }
-                data-testid="edit-input-image"
-                onChange={ this.handleChange }
-              />
-            </label>
+              <label htmlFor="image">
+                imagem
+                <input
+                  className="form-control name-edit"
+                  type="text"
+                  name="image"
+                  value={ image }
+                  data-testid="edit-input-image"
+                  onChange={ this.handleChange }
+                  placeholder="Place an url"
+                />
+              </label>
+            </div>
+            <div className="profile-info">
+              <label htmlFor="name" className="info-format">
+                Name
+                <input
+                  className="form-control"
+                  type="text"
+                  name="name"
+                  value={ name }
+                  data-testid="edit-input-name"
+                  onChange={ this.handleChange }
+                  placeholder="User name"
+                />
+              </label>
+              <label htmlFor="email" className="info-format">
+                Email
+                <input
+                  className="form-control"
+                  type="email"
+                  name="email"
+                  value={ email }
+                  data-testid="edit-input-email"
+                  onChange={ this.handleChange }
+                  placeholder="user@gmail.com"
+                />
+              </label>
+              <label htmlFor="description" className="info-format">
+                Descrição
+                <textarea
+                  className="form-control"
+                  name="description"
+                  value={ description }
+                  id="description"
+                  cols="30"
+                  rows="3"
+                  data-testid="edit-input-description"
+                  onChange={ this.handleChange }
+                  placeholder="About me"
+                />
+              </label>
+            </div>
+
             <button
+              className="btn btn-primary"
               type="button"
               data-testid="edit-button-save"
               disabled={ this.isButtonDisabled() }

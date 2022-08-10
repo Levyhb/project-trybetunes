@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Tooltip } from 'react-tippy';
 import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Loading from './Loading';
+import 'react-tippy/dist/tippy.css';
 
 export default class Search extends Component {
   constructor(props) {
@@ -51,55 +53,73 @@ export default class Search extends Component {
         { loadingState ? <Loading /> : (
           <section>
             <div>
-              <h2>Search</h2>
-              <form action="">
+              <h2 className="search-title">Search</h2>
+              <form action="" className="search-container input-group mb-3">
                 <input
                   type="text"
+                  className="form-control"
                   data-testid="search-artist-input"
+                  name="search"
                   placeholder="Nome do artista"
                   onChange={ this.handleChange }
                 />
                 <button
                   type="button"
+                  className="btn btn-outline-secondar btn-search"
                   data-testid="search-artist-button"
                   disabled={ isButtonDesabled }
                   onClick={ this.searchArtist }
                 >
-                  Pesquisar
+                  Seach
                 </button>
               </form>
               { activateButton ? (
-                <span>
-                  Resultado de álbuns de:
+                <span className="result-search">
+                  Result of albums by :
                   {' '}
                   { artistName }
                 </span>
               ) : ''}
-              <div>
-                { artistsAlbuns.length > 0 ? artistsAlbuns.map((album) => (
-                  <div key={ album.collectionId }>
-                    <img src={ album.artworkUrl100 } alt={ album.artistName } />
-                    <h3>
-                      { album.artistName }
-                      {' '}
-                    </h3>
-                    <span>
-                      {' '}
-                      { album.collectionName }
-                    </span>
-                    <p>
-                      <Link
-                        to={ `/album/${album.collectionId}` }
-                        data-testid={ `link-to-album-${album.collectionId}` }
+              <div className="album-search">
+                { artistsAlbuns.length > 0 ? artistsAlbuns.map((album) => {
+                  const imgHD = album.artworkUrl100.replace(/100x100bb/g, '500x500bb');
+                  return (
+                    <div
+                      key={ album.collectionId }
+                      className="card-album-container"
+                    >
+                      <Tooltip
+                        title="Go to the album"
                       >
-                        Ir para o Álbum
-                      </Link>
-                    </p>
+                        <Link
+                          className="card card-album"
+                          to={ `/album/${album.collectionId}` }
+                          data-testid={ `link-to-album-${album.collectionId}` }
+                        >
+                          <img src={ imgHD } alt={ album.artistName } />
+                          <h4 className="album-search-name">
+                            {' '}
+                            { album.collectionName }
+                          </h4>
+                          <span className="artist-search-name">
+                            { album.artistName }
+                            {' '}
+                          </span>
+                        </Link>
+                      </Tooltip>
+                    </div>
+
+                  );
+                }) : (
+                  <div>
+                    <span
+                      className="result-search-none"
+                    >
+                      {' '}
+                      No album was found
+                    </span>
 
                   </div>
-
-                )) : (
-                  <div><span> Nenhum álbum foi encontrado </span></div>
                 )}
               </div>
             </div>

@@ -1,5 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { loadAnimation } from 'lottie-web';
+import { defineLordIconElement } from 'lord-icon-element';
+// import { Tooltip, } from 'react-tippy';
 import Album from './pages/Album';
 import Favorites from './pages/Favorites';
 import Login from './pages/Login';
@@ -7,6 +10,9 @@ import NotFound from './pages/NotFound';
 import Profile from './pages/Profile';
 import ProfileEdit from './pages/ProfileEdit';
 import Search from './pages/Search';
+import 'react-tippy/dist/tippy.css';
+
+defineLordIconElement(loadAnimation);
 
 class App extends React.Component {
   constructor(props) {

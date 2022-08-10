@@ -1,5 +1,23 @@
+* {
+  box-sizing: unset;
+  font-family: system-ui , sans-serif;
+}
+
 .header-container {
+  background-color: #03342d;
+  color: white;
+  max-height: 6vh;
+  padding: 30px 0;
   width: 100%;
+}
+
+.trybetunes-logo-header {
+  height: 70px;
+  width: 100px;
+}
+
+.trybe-title {
+  color: #43cc83;
 }
 
 .header-titles {
@@ -8,9 +26,82 @@
   justify-content: space-around;
 }
 
+.perfil-icon {
+  align-items: center;
+  background-color: hwb(0 100% 0%);
+  border-radius: 50px;
+  color: black;
+  display: flex;
+  font-size: 16px;
+  padding: 0 5px;
+  text-decoration: none;
+}
+
+.name-icon {
+  font-size: 20px;
+  margin: 0 10px;
+}
+
+.icons {
+  height: 50px;
+  width: 50px;
+}
+
+.img-perfil {
+  border-radius: 50%;
+  height: 40px;
+  padding: 5px 0;
+  width: 40px;
+}
+
 .nav-div {
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.589);
   display: flex;
   justify-content: space-evenly;
-  padding: 10px 0;
   width: 100%;
+}
+
+.nav-item {
+  background-color: #d8d8d8;
+  color: #03342d;
+  display: flex;
+  font-size: 1.6em;
+  justify-content: center;
+  padding: 5px;
+  text-decoration: none;
+  width: 33%;
+}
+
+.nav-item:hover {
+  background-color: hwb(166 1% 58% / 0.916);
+  color: white;
+}
+
+.nav-link-active {
+  background-color: #036b53ea;
+  color: white;
+}
+
+@media ( min-width : 1400px ) {
+
+  .nav-item {
+    padding: 10px;
+  }
+
+  .header-container {
+    min-height: 8vh;
+  }
+
+  .name-icon {
+    font-size: 22px;
+  }
+
+  .img-perfil {
+    height: 45px;
+    width: 45px;
+  }
+
+  .edit-content {
+    justify-content: space-around;
+  }
 }

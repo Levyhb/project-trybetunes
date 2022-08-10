@@ -31,16 +31,46 @@ export default class Profile extends Component {
       <div data-testid="page-profile">
         <Header />
         { isLoading ? <Loading /> : (
-          <section>
-            <h2>Profile</h2>
-            <div>
-              <img src={ user.image } alt={ user.name } data-testid="profile-image" />
-              <span>{user.name}</span>
-              <span>{user.email}</span>
-              <span>{user.description}</span>
-              <Link to="/profile/edit"> Editar perfil </Link>
+          <div className="profile-container">
+            <h2 className="profile-title">Profile</h2>
+            <div className="">
+              <div className="img-edit-profile">
+                <img
+                  src={ user.image }
+                  alt={ user.name }
+                  data-testid="profile-image"
+                  className="profile-img"
+                />
+                <Link
+                  to="/profile/edit"
+                  className="btn btn-outline-primary"
+                >
+                  Editar perfil
+                </Link>
+              </div>
+              <div className="profile-info">
+
+                <label htmlFor="name" className="info-format ">
+                  Name
+                  <span name="name">{user.name}</span>
+                </label>
+                <label
+                  htmlFor="name"
+                  className="info-format"
+                >
+                  Email
+                  <span name="name">{user.email}</span>
+                </label>
+                <label
+                  htmlFor="description"
+                  className="info-format"
+                >
+                  Description
+                  <span name="description">{user.description}</span>
+                </label>
+              </div>
             </div>
-          </section>
+          </div>
         )}
       </div>
     );
