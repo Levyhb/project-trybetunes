@@ -1,0 +1,47 @@
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 30px;
+  width: 30%;
+}
+
+.search-title {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.result-search {
+  display: block;
+  font-size: 22px;
+  text-align: center;
+  width: 100%;
+}
+
+.result-search-none {
+  font-size: 22px;
+  left: 45%;
+  position: absolute;
+  top: 50%;
+}
+
+.album-search {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  width: 80%;
+}
+
+.btn-search:hover {
+  background-color: #198754;
+  border: 0 solid #198754;
+  box-shadow: 0 0 7px #198754;
+  color: white;
+}
+
+@media ( max-width : 1400px ) {
+
+  .card-album {
+    max-width: 16rem;
+  }
+}

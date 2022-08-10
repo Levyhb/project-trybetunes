@@ -4,7 +4,7 @@ import { FiHeart } from 'react-icons/fi';
 import { FaHeart } from 'react-icons/fa';
 import { Tooltip } from 'react-tippy';
 import Loading from './Loading';
-import './pages.css';
+import '../pages/pages.css';
 import AudioPlayer from './AudioPlayer';
 
 export default class MusicCard extends Component {

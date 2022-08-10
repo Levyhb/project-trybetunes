@@ -1,0 +1,166 @@
+.card-album {
+  background-color: rgb(227, 227, 227);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.612);
+  height: 100%;
+  margin: 5px;
+  opacity: calc(0.9);
+  text-decoration: none;
+  transform: scale(0.9);
+  width: 18rem;
+}
+
+.card-album:hover {
+  opacity: calc(1);
+  transform: scale(1);
+  transition: all 0.5s;
+}
+
+.page-album {
+  background-color: var(--cor-bgr-body);
+  height: 100vh;
+}
+
+.album-container {
+  align-items: center;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.album-container .music-container {
+  background-color: var(--cor-nav);
+  box-shadow: 0 0 9px var(--cor-nav);
+  color: white;
+  font-size: 16px;
+  max-height: 60vh;
+  min-height: 15vh;
+  overflow-y: scroll;
+}
+
+.album-container .music-container::-webkit-scrollbar {
+  display: none;
+}
+
+.music-container-format {
+  width: 15%;
+}
+
+/* stylelint-disable-next-line selector-max-combinators */
+.album-container .music-container div div .music-div {
+  align-items: center;
+  box-shadow: 0 0 1px;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  text-align: center;
+}
+
+
+.music-div audio {
+  padding: 5px;
+}
+
+.favorite-checkbox {
+  height: 1px;
+  visibility: hidden;
+  width: 1px;
+}
+
+.heart-icon {
+  cursor: pointer;
+  height: 30px;
+  transform: scale(0.9);
+  width: 30px;
+}
+
+.heart-icon:hover {
+  transform: scale(1);
+  transition: all 0.5s;
+}
+
+.favorite-checkbox:checked ~ .heart-icon {
+  color: red;
+}
+
+.div-album-box {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.div-album-box h4 {
+  color: rgba(222, 222, 222, 0.795);
+}
+
+.album-img {
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.685);
+  width: 350px;
+}
+
+.album-search-name {
+  text-align: center;
+}
+
+.artist-search-name {
+  color: rgba(0, 0, 0, 0.704);
+  text-align: center;
+}
+
+.album-link {
+  padding: 5px;
+  position: relative;
+  text-align: center;
+}
+
+@media ( max-width : 1400px ) {
+
+  .card-album {
+    max-width: 16rem;
+  }
+
+  .album-img {
+    width: 380px;
+  }
+
+  .div-album-box h2 {
+    font-size: 1.7em;
+  }
+
+  .div-album-box h4 {
+    font-size: 1.4em;
+  }
+
+  .album-container {
+    align-items: flex-start;
+  }
+
+  /* .favorites-box {
+    width: 70%;
+  } */
+}
+
+
+@media ( min-width : 1400px ) {
+
+  .album-img {
+    margin-top: 20px;
+    width: 500px;
+  }
+
+  .music-container {
+    font-size: 21px;
+    margin-top: 20px;
+  }
+
+  .album-container .music-container {
+    text-align: center;
+    width: 45%;
+  }
+
+
+  .login-container {
+    padding: 50px;
+  }
+}

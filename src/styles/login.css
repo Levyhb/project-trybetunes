@@ -1,0 +1,45 @@
+.login-page {
+  align-content: center;
+  align-items: center;
+  background-color: var(--cor-header);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100%;
+}
+
+.login-container {
+  align-items: center;
+  background-color: rgb(236, 236, 236);
+  border-radius: 20px;
+  color: var(--cor-header);
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+}
+
+.trybetunes-logo {
+  height: 140px;
+  width: 300px;
+}
+
+.name-login {
+  align-items: center;
+  display: flex;
+  font-size: 22px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.name-login input {
+  font-size: 18px;
+  margin: 5px;
+}
+
+
+@media ( min-width : 1400px ) {
+
+  .login-container {
+    padding: 50px;
+  }
+}

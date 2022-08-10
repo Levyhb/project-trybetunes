@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './pages.css';
+import '../pages/pages.css';
 
 export default class AudioPlayer extends Component {
   render() {
-    const { previewUrl, image, trackName, artistName,
+    const { previewUrl, image, trackName,
       playMusic, nameArtist } = this.props;
     return (
       <div className="audio-player-container">
         <img src={ image } alt={ trackName } />
         <div className="audio-player-names">
           <span className="trackName">{trackName}</span>
-          <span className="artistName">{nameArtist }</span>
+          <span className="artistName">{nameArtist}</span>
         </div>
         <audio
           data-testid="audio-component"
@@ -41,6 +41,6 @@ AudioPlayer.propTypes = {
   trackName: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
   playMusic: PropTypes.func.isRequired,
-  artistName: PropTypes.string.isRequired,
+  nameArtist: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
 };

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Tooltip } from 'react-tippy';
 import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
-import Loading from './Loading';
+import Loading from '../components/Loading';
 import 'react-tippy/dist/tippy.css';
 
 export default class Search extends Component {

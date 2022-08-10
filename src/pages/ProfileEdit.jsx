@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import { getUser, updateUser } from '../services/userAPI';
-import Loading from './Loading';
+import Loading from '../components/Loading';
 
 export default class ProfileEdit extends Component {
   constructor(props) {

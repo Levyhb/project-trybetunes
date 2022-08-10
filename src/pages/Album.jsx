@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
-import MusicCard from './MusicCard';
+import MusicCard from '../components/MusicCard';
 import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
-import Loading from './Loading';
+import Loading from '../components/Loading';
 import './pages.css';
 
 export default class Album extends Component {
@@ -65,7 +65,7 @@ export default class Album extends Component {
     const { musicsOfAlbum, artistName,
       albumImg, albumName, isLoading, favoritesSongs } = this.state;
     const imgHd = albumImg.replace(/100x100bb/g, '500x500bb');
-    // const trackPrev = musicsOfAlbum.previewUrl;
+
     return (
       <div data-testid="page-album" className="page-album">
         <Header />
