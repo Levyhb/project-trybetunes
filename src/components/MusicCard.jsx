@@ -16,20 +16,16 @@ export default class MusicCard extends Component {
     };
   }
 
-  playMusic = () => {
-    const { playing } = this.state;
-    if (!playing) {
-      this.setState({ playing: true });
-    } else {
-      this.setState({ playing: false });
-    }
-  }
+  // playMusic = (music) => {
+  //   const { playing } = this.state;
+  //   this.setState({ playing: !playing });
+  // }
 
   render() {
     const { isLoading, playing } = this.state;
     const { previewUrl, trackName, trackId,
       handleChangeFavorites, isFavorite,
-      artistName, music, image, nameArtist } = this.props;
+      artistName, music, image, nameArtist, playMusic } = this.props;
     return (
       <div>
 
@@ -87,7 +83,7 @@ export default class MusicCard extends Component {
             </div>
             <div className="btn-music-player">
               <lord-icon
-                onClick={ this.playMusic }
+                onClick={ () => playMusic({ trackName, previewUrl, image, nameArtist }) }
                 id="play-btn"
                 src="https://cdn.lordicon.com/vnxmkidq.json"
                 trigger="click"
@@ -95,15 +91,6 @@ export default class MusicCard extends Component {
                 style={ { width: '50px', height: '50px' } }
               />
             </div>
-            { playing ? (
-              <AudioPlayer
-                previewUrl={ previewUrl }
-                trackName={ trackName }
-                nameArtist={ nameArtist }
-                image={ image }
-                playMusic={ this.playMusic }
-              />
-            ) : null }
           </div>
         )}
 

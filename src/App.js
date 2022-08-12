@@ -11,6 +11,7 @@ import Profile from './pages/Profile';
 import ProfileEdit from './pages/ProfileEdit';
 import Search from './pages/Search';
 import 'react-tippy/dist/tippy.css';
+import AudioPlayer from './components/AudioPlayer';
 
 defineLordIconElement(loadAnimation);
 
@@ -22,7 +23,20 @@ class App extends React.Component {
       username: '',
       isButtonDisabled: true,
       isLoading: false,
+      playing: false,
+      music: {},
     };
+  }
+
+  // componentDidMount = () => {
+  //   const isPlay = localStorage.getItem('isPlay');
+  //   const playMusic = localStorage.getItem('playMusic') || {};
+  //   this.setState({ isPlay, playMusic });
+  // }
+
+  playMusic = (music) => {
+    const { playing } = this.state;
+    this.setState({ playing: !playing, music });
   }
 
   handleChange = ({ target }) => {
@@ -41,18 +55,29 @@ class App extends React.Component {
   }
 
   render() {
-    const { username, isButtonDisabled, isLoading } = this.state;
+    const { username, isButtonDisabled, isLoading, playing, music } = this.state;
     return (
       <div>
         <Switch>
-          {/* <Route path="/album/:id" component={ Album } /> */}
-          <Route exact path="/album/:id" render={ (props) => <Album { ...props } /> } />
+          <Route
+            exact
+            path="/album/:id"
+            render={ (props) => (<Album
+              { ...props }
+              playMusic={ this.playMusic }
+            />) }
+          />
           <Route path="/profile/edit" component={ ProfileEdit } />
           <Route
             path="/profile"
             component={ Profile }
           />
-          <Route path="/favorites" component={ Favorites } />
+          <Route
+            path="/favorites"
+            render={ (props) => (
+              <Favorites { ...props } playMusic={ this.playMusic } />
+            ) }
+          />
           <Route path="/search" component={ Search } />
           <Route
             exact
@@ -71,6 +96,15 @@ class App extends React.Component {
           <Route component={ NotFound } />
 
         </Switch>
+        { playing ? (
+          <AudioPlayer
+            previewUrl={ music.previewUrl }
+            trackName={ music.trackName }
+            nameArtist={ music.nameArtist }
+            image={ music.image }
+            playMusic={ () => this.playMusic({}) }
+          />
+        ) : null }
       </div>
 
     );

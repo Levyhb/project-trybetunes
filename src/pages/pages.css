@@ -85,32 +85,6 @@
   transition: all 0.5s;
 }
 
-@media ( max-width : 1400px ) {
-
-  .card-album {
-    max-width: 16rem;
-  }
-
-  .album-img {
-    width: 380px;
-  }
-
-  .div-album-box h2 {
-    font-size: 1.7em;
-  }
-
-  .div-album-box h4 {
-    font-size: 1.4em;
-  }
-
-  .album-container {
-    align-items: flex-start;
-  }
-
-  .favorites-box {
-    width: 70%;
-  }
-}
 
 @media ( min-width : 1400px ) {
 

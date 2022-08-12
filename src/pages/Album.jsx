@@ -66,6 +66,8 @@ export default class Album extends Component {
       albumImg, albumName, isLoading, favoritesSongs } = this.state;
     const imgHd = albumImg.replace(/100x100bb/g, '500x500bb');
 
+    const { playMusic } = this.props;
+
     return (
       <div data-testid="page-album" className="page-album">
         <Header />
@@ -83,11 +85,13 @@ export default class Album extends Component {
                     previewUrl={ music.previewUrl }
                     trackName={ music.trackName }
                     trackId={ music.trackId }
+                    artistName={ music.artistName }
                     nameArtist={ music.artistName }
                     image={ imgHd }
                     isFavorite={ favoritesSongs.some((a) => a.trackId === music.trackId) }
                     music={ music }
                     handleChangeFavorites={ this.handleChangeFavorites }
+                    playMusic={ playMusic }
                   />
                 </div>
               ))}
@@ -101,6 +105,7 @@ export default class Album extends Component {
 }
 
 Album.propTypes = {
+  playMusic: PropTypes.func.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string.isRequired,

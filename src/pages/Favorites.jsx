@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import { getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Loading from '../components/Loading';
@@ -29,6 +30,7 @@ export default class Favorites extends Component {
 
   render() {
     const { isLoading, favoriteSongs } = this.state;
+    const { playMusic } = this.props;
 
     return (
       <div>
@@ -58,6 +60,7 @@ export default class Favorites extends Component {
                         }
                         music={ song }
                         handleChangeFavorites={ this.handleChangeFavorites }
+                        playMusic={ playMusic }
                       />
                     </div>
                   </div>
@@ -70,3 +73,7 @@ export default class Favorites extends Component {
     );
   }
 }
+
+Favorites.propTypes = {
+  playMusic: PropTypes.func.isRequired,
+};

@@ -22,8 +22,6 @@ class Login extends Component {
     this.setState({ isLoading: false });
   }
 
-  // ADICIONAR FUNÇÃO DE LOGIN, (USUARIO E SENHA).
-
   render() {
     const { isButtonDisabled, handleChange } = this.props;
     const { isLoading } = this.state;

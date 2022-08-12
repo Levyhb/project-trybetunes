@@ -4,7 +4,7 @@ import '../pages/pages.css';
 export default class Loading extends Component {
   render() {
     return (
-      // ADICIONAR TEMPO DE LOADING
+      // FALTA ADICIONAR TEMPO DE LOADING
       <div>
         <div className="lds-roller loading">
           <div />

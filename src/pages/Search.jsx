@@ -112,12 +112,11 @@ export default class Search extends Component {
                   );
                 }) : (
                   <div>
-                    <span
+                    <h3
                       className="result-search-none"
                     >
-                      {' '}
                       No album was found
-                    </span>
+                    </h3>
 
                   </div>
                 )}

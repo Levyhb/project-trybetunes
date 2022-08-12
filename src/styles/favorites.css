@@ -39,7 +39,8 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
   width: 100%;
 }
 
@@ -49,4 +50,12 @@
   display: flex;
   justify-content: space-between;
   width: 630px;
+}
+
+
+@media ( max-width : 1400px ) {
+
+  .favorites-box {
+    width: 70%;
+  }
 }
