@@ -60,7 +60,7 @@ export default class Search extends Component {
                   className="form-control"
                   data-testid="search-artist-input"
                   name="search"
-                  placeholder="Nome do artista"
+                  placeholder="Artist Name"
                   onChange={ this.handleChange }
                 />
                 <button

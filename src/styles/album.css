@@ -164,3 +164,12 @@
     padding: 50px;
   }
 }
+
+
+@media ( max-width : 1400px ) {
+
+  .album-container .music-container {
+    max-width: 60%;
+    text-align: center;
+  }
+}
