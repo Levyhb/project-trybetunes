@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/app-toot-name/static/css/main.3273f315.css",
+    "main.js": "/app-toot-name/static/js/main.ab7c1af4.js",
+    "static/media/trybetune-logo.png": "/app-toot-name/static/media/trybetune-logo.b5520d8ebdfa10886dc5.png",
+    "index.html": "/app-toot-name/index.html",
+    "main.3273f315.css.map": "/app-toot-name/static/css/main.3273f315.css.map",
+    "main.ab7c1af4.js.map": "/app-toot-name/static/js/main.ab7c1af4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3273f315.css",
+    "static/js/main.ab7c1af4.js"
+  ]
+}
