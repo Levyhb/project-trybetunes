@@ -75,7 +75,7 @@ class App extends React.Component {
           <Route path="/project-trybetunes/search" component={ Search } />
           <Route
             exact
-            path="/project-trybetunes"
+            path="/project-trybetunes/"
             render={ (props) => (
               <Login
                 { ...props }
