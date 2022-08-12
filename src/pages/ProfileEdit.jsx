@@ -69,7 +69,7 @@ export default class ProfileEdit extends Component {
       this.setState({ isLoading: true });
       await updateUser(userStorageInformation);
       this.setState({ isLoading: false });
-      history.push('/profile');
+      history.push('/project-trybetunes/profile');
     });
   }
 

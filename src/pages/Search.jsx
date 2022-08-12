@@ -93,7 +93,7 @@ export default class Search extends Component {
                       >
                         <Link
                           className="card card-album"
-                          to={ `/album/${album.collectionId}` }
+                          to={ `/project-trybetunes/album/${album.collectionId}` }
                           data-testid={ `link-to-album-${album.collectionId}` }
                         >
                           <img src={ imgHD } alt={ album.artistName } />

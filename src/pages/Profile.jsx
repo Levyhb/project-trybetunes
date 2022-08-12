@@ -42,7 +42,7 @@ export default class Profile extends Component {
                   className="profile-img"
                 />
                 <Link
-                  to="/profile/edit"
+                  to="/project-trybetunes/profile/edit"
                   className="btn btn-outline-primary"
                 >
                   Editar perfil

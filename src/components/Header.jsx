@@ -35,7 +35,7 @@ class Header extends Component {
               <span className="trybe-title">Trybe</span>
               Tunes
             </h1>
-            <Link to="/profile" className="perfil-icon">
+            <Link to="/project-trybetunes/profile" className="perfil-icon">
               { userImage.length === 0 ? (
                 <lord-icon
                   src="https://cdn.lordicon.com/dxjqoygy.json"
@@ -58,7 +58,7 @@ class Header extends Component {
 
           <nav className="nav-div">
             <NavLink
-              to="/search"
+              to="/project-trybetunes/search"
               activeClassName="nav-link-active"
               data-testid="link-to-search"
               className="nav-item"
@@ -73,7 +73,7 @@ class Header extends Component {
               </div>
             </NavLink>
             <NavLink
-              to="/favorites"
+              to="/project-trybetunes/favorites"
               activeClassName="nav-link-active"
               data-testid="link-to-favorites"
               className="nav-item"
@@ -88,7 +88,7 @@ class Header extends Component {
               </div>
             </NavLink>
             <NavLink
-              to="/profile"
+              to="/project-trybetunes/profile"
               activeClassName="nav-link-active"
               data-testid="link-to-profile"
               className="nav-item"

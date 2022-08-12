@@ -28,12 +28,6 @@ class App extends React.Component {
     };
   }
 
-  // componentDidMount = () => {
-  //   const isPlay = localStorage.getItem('isPlay');
-  //   const playMusic = localStorage.getItem('playMusic') || {};
-  //   this.setState({ isPlay, playMusic });
-  // }
-
   playMusic = (music) => {
     const { playing } = this.state;
     this.setState({ playing: !playing, music });
@@ -61,27 +55,27 @@ class App extends React.Component {
         <Switch>
           <Route
             exact
-            path="/album/:id"
+            path="/project-trybetunes/album/:id"
             render={ (props) => (<Album
               { ...props }
               playMusic={ this.playMusic }
             />) }
           />
-          <Route path="/profile/edit" component={ ProfileEdit } />
+          <Route path="/project-trybetunes/profile/edit" component={ ProfileEdit } />
           <Route
-            path="/profile"
+            path="/project-trybetunes/profile"
             component={ Profile }
           />
           <Route
-            path="/favorites"
+            path="/project-trybetunes/favorites"
             render={ (props) => (
               <Favorites { ...props } playMusic={ this.playMusic } />
             ) }
           />
-          <Route path="/search" component={ Search } />
+          <Route path="/project-trybetunes/search" component={ Search } />
           <Route
             exact
-            path="/"
+            path="/project-trybetunes"
             render={ (props) => (
               <Login
                 { ...props }

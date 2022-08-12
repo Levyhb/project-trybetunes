@@ -18,7 +18,7 @@ class Login extends Component {
     const { username, loadingEvent, history } = this.props;
     loadingEvent(true);
     await createUser({ name: username });
-    history.push('/search');
+    history.push('/project-trybetunes/search');
     this.setState({ isLoading: false });
   }
 
