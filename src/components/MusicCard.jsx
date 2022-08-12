@@ -5,14 +5,13 @@ import { FaHeart } from 'react-icons/fa';
 import { Tooltip } from 'react-tippy';
 import Loading from './Loading';
 import '../pages/pages.css';
-import AudioPlayer from './AudioPlayer';
+// import AudioPlayer from './AudioPlayer';
 
 export default class MusicCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoading: false,
-      playing: false,
     };
   }
 
@@ -22,7 +21,7 @@ export default class MusicCard extends Component {
   // }
 
   render() {
-    const { isLoading, playing } = this.state;
+    const { isLoading } = this.state;
     const { previewUrl, trackName, trackId,
       handleChangeFavorites, isFavorite,
       artistName, music, image, nameArtist, playMusic } = this.props;
@@ -108,6 +107,7 @@ MusicCard.propTypes = {
   artistName: PropTypes.string.isRequired,
   nameArtist: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
+  playMusic: PropTypes.func.isRequired,
   music: PropTypes.shape({
     trackId: PropTypes.number,
     trackName: PropTypes.string,
