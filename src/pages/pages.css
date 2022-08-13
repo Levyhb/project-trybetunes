@@ -27,11 +27,11 @@
   background-color: #222222f5;
   color: white;
   display: flex;
-  height: 15vh;
+  height: 13vh;
   justify-content: space-between;
   left: 0%;
   position: fixed;
-  top: 85%;
+  top: 87%;
   width: 100%;
   z-index: 9;
 }
