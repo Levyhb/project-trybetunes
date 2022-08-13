@@ -3,6 +3,7 @@
 }
 
 .favorites-container {
+  min-height: 40vh;
   padding-bottom: 13vh;
 }
 
